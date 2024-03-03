@@ -4,20 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoDB {
+public class ConnectionFactory {
 
-    public static void main (String... x){
+    public Connection recuperarConexao (){
 
         try {
-            Connection connection = DriverManager.getConnection(
+            return DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/bytebank",
                     "postgres",
                     "postgres");
-
-            System.out.println("recuperei a conexão");
-            connection.close();
         }catch (SQLException e){
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
     }
 }
