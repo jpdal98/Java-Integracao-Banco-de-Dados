@@ -10,9 +10,9 @@ public class ConexaoDB {
 
         try {
             Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/byte_bank",
-                    "root",
-                    "root");
+                    "jdbc:postgresql://localhost:5432/bytebank",
+                    "postgres",
+                    "postgres");
 
             System.out.println("recuperei a conexão");
             connection.close();
