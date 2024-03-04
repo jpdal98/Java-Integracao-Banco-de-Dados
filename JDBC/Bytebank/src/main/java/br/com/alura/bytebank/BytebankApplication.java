@@ -21,18 +21,21 @@ public class BytebankApplication {
                         listarContas();
                         break;
                     case 2:
-                        abrirConta();
+                        buscarConta();
                         break;
                     case 3:
-                        encerrarConta();
+                        abrirConta();
                         break;
                     case 4:
-                        consultarSaldo();
+                        encerrarConta();
                         break;
                     case 5:
-                        realizarSaque();
+                        consultarSaldo();
                         break;
                     case 6:
+                        realizarSaque();
+                        break;
+                    case 7:
                         realizarDeposito();
                         break;
                 }
@@ -51,12 +54,13 @@ public class BytebankApplication {
         System.out.println("""
                 BYTEBANK - ESCOLHA UMA OPÇÃO:
                 1 - Listar contas abertas
-                2 - Abertura de conta
-                3 - Encerramento de conta
-                4 - Consultar saldo de uma conta
-                5 - Realizar saque em uma conta
-                6 - Realizar depósito em uma conta
-                7 - Sair
+                2 - Buscar conta pelo numero
+                3 - Abertura de conta
+                4 - Encerramento de conta
+                5 - Consultar saldo de uma conta
+                6 - Realizar saque em uma conta
+                7 - Realizar depósito em uma conta
+                8 - Sair
                 """);
         return teclado.nextInt();
     }
@@ -65,6 +69,17 @@ public class BytebankApplication {
         System.out.println("Contas cadastradas:");
         var contas = service.listarContasAbertas();
         contas.stream().forEach(System.out::println);
+
+        System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
+        teclado.next();
+    }
+
+    private static void buscarConta() {
+        System.out.println("Digite o numero da conta: ");
+        var numeroDaConta = teclado.nextInt();
+        var conta = service.buscarContaPorNumero(numeroDaConta);
+
+        System.out.println("conta: " + conta);
 
         System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
         teclado.next();

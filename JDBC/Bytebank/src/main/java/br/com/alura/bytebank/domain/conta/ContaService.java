@@ -11,16 +11,16 @@ import java.util.Set;
 
 public class ContaService {
 
-    private Connection connection;
+    private ConnectionFactory connection;
 
     public ContaService(){
-       this.connection = new ConnectionFactory().recuperarConexao();
+       this.connection = new ConnectionFactory();
     }
 
     private Set<Conta> contas = new HashSet<>();
 
     public Set<Conta> listarContasAbertas() {
-        Connection conn = connection;
+        Connection conn = connection.recuperarConexao();
         return new ContaDAO(conn).listarContas();
     }
 
@@ -30,7 +30,7 @@ public class ContaService {
     }
 
     public void abrir(DadosAberturaConta dadosDaConta) {
-        Connection conn = connection;
+        Connection conn = connection.recuperarConexao();
         new ContaDAO(conn).salvar(dadosDaConta);
     }
 
@@ -65,11 +65,13 @@ public class ContaService {
         contas.remove(conta);
     }
 
-    private Conta buscarContaPorNumero(Integer numero) {
-        return contas
-                .stream()
-                .filter(c -> c.getNumero() == numero)
-                .findFirst()
-                .orElseThrow(() -> new RegraDeNegocioException("Não existe conta cadastrada com esse número!"));
+    public Conta buscarContaPorNumero(Integer numero) {
+        Connection conn = connection.recuperarConexao();
+        Conta conta = new ContaDAO(conn).buscarConta(numero);
+        if(conta != null) {
+            return conta;
+        } else {
+            throw new RegraDeNegocioException("Não existe conta cadastrada com esse número!");
+        }
     }
 }
