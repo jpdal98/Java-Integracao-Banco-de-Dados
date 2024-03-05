@@ -50,8 +50,4 @@ public class Conta {
     public BigDecimal getSaldo() {
         return saldo;
     }
-
-    public Cliente getTitular() {
-        return titular;
-    }
 }

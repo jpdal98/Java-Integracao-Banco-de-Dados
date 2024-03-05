@@ -56,8 +56,8 @@ public class ContaService {
             throw new RegraDeNegocioException("Valor do deposito deve ser superior a zero!");
         }
 
-        Connection conn = connection.recuperarConexao();
         BigDecimal novoValor = conta.getSaldo().add(valor);
+        Connection conn = connection.recuperarConexao();
         new ContaDAO(conn).alterar(conta.getNumero(), novoValor);
     }
 
@@ -69,11 +69,16 @@ public class ContaService {
 
     public void encerrar(Integer numeroDaConta) {
         var conta = buscarContaPorNumero(numeroDaConta);
+        if (conta == null) {
+            throw new RegraDeNegocioException("Não existe conta cadastrada com esse número!");
+        }
+
         if (conta.possuiSaldo()) {
             throw new RegraDeNegocioException("Conta não pode ser encerrada pois ainda possui saldo!");
         }
 
-        contas.remove(conta);
+        Connection conn = connection.recuperarConexao();
+        new ContaDAO(conn).deletar(conta.getNumero());
     }
 
     public Conta buscarContaPorNumero(Integer numero) {
