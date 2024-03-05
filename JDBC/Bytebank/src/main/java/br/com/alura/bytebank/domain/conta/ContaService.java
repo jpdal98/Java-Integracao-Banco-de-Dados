@@ -92,7 +92,7 @@ public class ContaService {
     public void encerrarLogico(Integer numeroDaConta) {
         var conta = buscarContaPorNumero(numeroDaConta);
         if (conta.possuiSaldo()) {
-            throw new RegraDeNegocioException("Conta não pode ser encerrada pois ainda possui saldo!");
+            throw new RegraDeNegocioException("Conta não pode ser desativada pois ainda possui saldo!");
         }
 
         Connection conn = connection.recuperarConexao();
