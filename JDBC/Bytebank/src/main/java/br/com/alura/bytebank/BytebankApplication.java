@@ -14,7 +14,7 @@ public class BytebankApplication {
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
-        while (opcao != 8) {
+        while (opcao != 9) {
             try {
                 switch (opcao) {
                     case 1:
@@ -36,6 +36,9 @@ public class BytebankApplication {
                         realizarSaque();
                         break;
                     case 7:
+                        realizarTrasnferencia();
+                        break;
+                    case 8:
                         realizarDeposito();
                         break;
                 }
@@ -59,8 +62,9 @@ public class BytebankApplication {
                 4 - Encerramento de conta
                 5 - Consultar saldo de uma conta
                 6 - Realizar saque em uma conta
-                7 - Realizar depósito em uma conta
-                8 - Sair
+                7 - Realizar transferência
+                8 - Realizar depósito em uma conta
+                9 - Sair
                 """);
         return teclado.nextInt();
     }
@@ -149,6 +153,22 @@ public class BytebankApplication {
         service.realizarDeposito(numeroDaConta, valor);
 
         System.out.println("Depósito realizado com sucesso!");
+        System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
+        teclado.next();
+    }
+
+    private static void realizarTrasnferencia() {
+        System.out.println("Digite o número da conta de origem:");
+        var numeroDaContaOrigem = teclado.nextInt();
+
+        System.out.println("Digite o número da conta de destino:");
+        var numeroDaContaDestino = teclado.nextInt();
+
+        System.out.println("Digite o valor da transferência:");
+        var valor = teclado.nextBigDecimal();
+
+        service.realizarTransferencia(numeroDaContaOrigem, numeroDaContaDestino, valor);
+        System.out.println("Transferência realizada com sucesso!");
         System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
         teclado.next();
     }

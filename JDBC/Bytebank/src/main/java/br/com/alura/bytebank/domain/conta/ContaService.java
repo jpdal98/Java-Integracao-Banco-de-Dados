@@ -45,8 +45,8 @@ public class ContaService {
             throw new RegraDeNegocioException("Saldo insuficiente!");
         }
 
-        BigDecimal novoValor = conta.getSaldo().subtract(valor);
         Connection conn = connection.recuperarConexao();
+        BigDecimal novoValor = conta.getSaldo().subtract(valor);
         new ContaDAO(conn).alterar(conta.getNumero(), novoValor);
     }
 
@@ -57,9 +57,15 @@ public class ContaService {
         }
 
         Connection conn = connection.recuperarConexao();
-        new ContaDAO(conn).alterar(conta.getNumero(), valor);
+        BigDecimal novoValor = conta.getSaldo().add(valor);
+        new ContaDAO(conn).alterar(conta.getNumero(), novoValor);
     }
 
+    public void realizarTransferencia(Integer numeroDaContaOrigem, Integer numeroDaContaDestino,
+                                      BigDecimal valor){
+            this.realizarSaque(numeroDaContaOrigem, valor);
+            this.realizarDeposito(numeroDaContaDestino, valor);
+    }
 
     public void encerrar(Integer numeroDaConta) {
         var conta = buscarContaPorNumero(numeroDaConta);

@@ -23,7 +23,7 @@ public class ContaDAO {
 
     public void salvar(DadosAberturaConta dadosDaConta) {
         var cliente = new Cliente(dadosDaConta.dadosCliente());
-        var conta = new Conta(dadosDaConta.numero(), cliente);
+        var conta = new Conta(dadosDaConta.numero(), cliente, BigDecimal.ZERO);
 
         String sql = "INSERT INTO conta(numero, saldo, cliente_nome, cliente_cpf, cliente_email)" +
                 "VALUES(?, ?, ?, ?, ?)";
@@ -99,7 +99,6 @@ public class ContaDAO {
     }
 
     public void alterar(Integer numeroDaConta, BigDecimal valor){
-        Conta conta = null;
         String sql = "UPDATE conta SET saldo = ? WHERE numero = ?";
         try{
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -107,10 +106,16 @@ public class ContaDAO {
             preparedStatement.setInt(2, numeroDaConta);
             preparedStatement.execute();
 
+            preparedStatement.execute();
+            conn.commit();
             preparedStatement.close();
             conn.close();
-        }catch (
-                SQLException e){
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
             throw new RuntimeException(e);
         }
     }
