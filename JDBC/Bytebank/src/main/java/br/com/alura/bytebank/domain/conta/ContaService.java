@@ -45,6 +45,10 @@ public class ContaService {
             throw new RegraDeNegocioException("Saldo insuficiente!");
         }
 
+        if(!conta.isEstaAtiva()){
+            throw new RegraDeNegocioException("Conta não está ativa!");
+        }
+
         Connection conn = connection.recuperarConexao();
         BigDecimal novoValor = conta.getSaldo().subtract(valor);
         new ContaDAO(conn).alterar(conta.getNumero(), novoValor);
@@ -54,6 +58,10 @@ public class ContaService {
         var conta = buscarContaPorNumero(numeroDaConta);
         if (valor.compareTo(BigDecimal.ZERO) <= 0) {
             throw new RegraDeNegocioException("Valor do deposito deve ser superior a zero!");
+        }
+
+        if(!conta.isEstaAtiva()){
+            throw new RegraDeNegocioException("Conta não está ativa!");
         }
 
         BigDecimal novoValor = conta.getSaldo().add(valor);
@@ -81,13 +89,28 @@ public class ContaService {
         new ContaDAO(conn).deletar(conta.getNumero());
     }
 
+    public void encerrarLogico(Integer numeroDaConta) {
+        var conta = buscarContaPorNumero(numeroDaConta);
+        if (conta.possuiSaldo()) {
+            throw new RegraDeNegocioException("Conta não pode ser encerrada pois ainda possui saldo!");
+        }
+
+        Connection conn = connection.recuperarConexao();
+        new ContaDAO(conn).encerrarLogico(numeroDaConta);
+    }
+
+    public void ativarLogico(Integer numeroDaConta) {
+        Connection conn = connection.recuperarConexao();
+        new ContaDAO(conn).ativarLogico(numeroDaConta);
+    }
+
     public Conta buscarContaPorNumero(Integer numero) {
         Connection conn = connection.recuperarConexao();
         Conta conta = new ContaDAO(conn).buscarConta(numero);
         if(conta != null) {
             return conta;
         } else {
-            throw new RegraDeNegocioException("Não existe conta cadastrada com esse número!");
+            throw new RegraDeNegocioException("Não existe conta cadastrada com esse número ou conta não está ativa!");
         }
     }
 }

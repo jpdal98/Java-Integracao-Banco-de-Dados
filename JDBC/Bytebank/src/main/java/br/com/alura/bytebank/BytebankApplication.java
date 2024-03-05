@@ -14,7 +14,7 @@ public class BytebankApplication {
 
     public static void main(String[] args) {
         var opcao = exibirMenu();
-        while (opcao != 9) {
+        while (opcao != 11) {
             try {
                 switch (opcao) {
                     case 1:
@@ -41,6 +41,12 @@ public class BytebankApplication {
                     case 8:
                         realizarDeposito();
                         break;
+                    case 9:
+                        desativarConta();
+                        break;
+                    case 10:
+                        reativarConta();
+                        break;
                 }
             } catch (RegraDeNegocioException e) {
                 System.out.println("Erro: " +e.getMessage());
@@ -64,7 +70,9 @@ public class BytebankApplication {
                 6 - Realizar saque em uma conta
                 7 - Realizar transferência
                 8 - Realizar depósito em uma conta
-                9 - Sair
+                9 - Desativar conta
+                10 - Reativar conta
+                11 - Sair
                 """);
         return teclado.nextInt();
     }
@@ -169,6 +177,26 @@ public class BytebankApplication {
 
         service.realizarTransferencia(numeroDaContaOrigem, numeroDaContaDestino, valor);
         System.out.println("Transferência realizada com sucesso!");
+        System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
+        teclado.next();
+    }
+
+    private static void desativarConta() {
+        System.out.println("Digite o número da conta:");
+        var numeroDaConta = teclado.nextInt();
+
+        service.encerrarLogico(numeroDaConta);
+        System.out.println("Conta desativada com sucesso!");
+        System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
+        teclado.next();
+    }
+
+    private static void reativarConta() {
+        System.out.println("Digite o número da conta:");
+        var numeroDaConta = teclado.nextInt();
+
+        service.ativarLogico(numeroDaConta);
+        System.out.println("Conta reativada com sucesso!");
         System.out.println("Pressione qualquer tecla e de ENTER para voltar ao menu principal");
         teclado.next();
     }
