@@ -59,7 +59,7 @@ public class ContaDAO {
                 String clienteCpf = resultSet.getString(4);
                 String clienteEmail = resultSet.getString(5);
                 Cliente cliente = new Cliente(new DadosCadastroCliente(clienteNome, clienteCpf, clienteEmail));
-                contas.add(new Conta(numeroConta, cliente));
+                contas.add(new Conta(numeroConta, cliente, saldo));
             }
             resultSet.close();
             preparedStatement.close();
@@ -86,7 +86,7 @@ public class ContaDAO {
                 String clienteCpf = resultSet.getString(4);
                 String clienteEmail = resultSet.getString(5);
                 Cliente cliente = new Cliente(new DadosCadastroCliente(clienteNome, clienteCpf, clienteEmail));
-                conta = new Conta(numeroConta, cliente);
+                conta = new Conta(numeroConta, cliente, saldo);
             }
             resultSet.close();
             preparedStatement.close();
@@ -96,5 +96,22 @@ public class ContaDAO {
             throw new RuntimeException(e);
         }
         return conta;
+    }
+
+    public void alterar(Integer numeroDaConta, BigDecimal valor){
+        Conta conta = null;
+        String sql = "UPDATE conta SET saldo = ? WHERE numero = ?";
+        try{
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setBigDecimal(1, valor);
+            preparedStatement.setInt(2, numeroDaConta);
+            preparedStatement.execute();
+
+            preparedStatement.close();
+            conn.close();
+        }catch (
+                SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 }
