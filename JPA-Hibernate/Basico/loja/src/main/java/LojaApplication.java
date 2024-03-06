@@ -73,5 +73,8 @@ public class LojaApplication {
 
         produtos = produtoDAO.buscarPorNomeDaCategoria("Celulares");
         produtos.forEach(p2 -> System.out.println(p.getNome()));
+
+        BigDecimal precoProduto = produtoDAO.buscarPrecoPorNomeDoProduto("Xiaomi readmi 12");
+        System.out.println(precoProduto);
     }
 }
