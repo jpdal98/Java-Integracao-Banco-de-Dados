@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: utilizando mapeamento enumerated no atributo de categoria">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/dao/CategoriaDAO.java" afterDir="false" />
+    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: estabelecendo cardinalidade entre as classes produto e categoria">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LojaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LojaApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Categoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Produto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709726923865</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: estabelecendo cardinalidade entre as classes produto e categoria">
+      <option name="closed" value="true" />
+      <created>1709727820280</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709727820280</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -127,6 +133,7 @@
     <MESSAGE value="feat: criando função cadastrar produto" />
     <MESSAGE value="feat: Organizando o código" />
     <MESSAGE value="feat: utilizando mapeamento enumerated no atributo de categoria" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: utilizando mapeamento enumerated no atributo de categoria" />
+    <MESSAGE value="feat: estabelecendo cardinalidade entre as classes produto e categoria" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: estabelecendo cardinalidade entre as classes produto e categoria" />
   </component>
 </project>
