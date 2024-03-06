@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Produtos")
+@Table(name = "produtos")
 public class Produto {
 
     @Id
@@ -36,10 +36,6 @@ public class Produto {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {

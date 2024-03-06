@@ -5,22 +5,26 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "clientes")
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     private String nome;
 
-    public Categoria() {
+    private String cpf;
+
+    public Cliente() {
     }
 
-    public Categoria(String nome) {
+    public Cliente(String nome, String cpf) {
         this.nome = nome;
+        this.cpf = cpf;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -32,23 +36,32 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Categoria categoria)) return false;
-        return id == categoria.id && Objects.equals(nome, categoria.nome);
+        if (!(o instanceof Cliente cliente)) return false;
+        return Objects.equals(id, cliente.id) && Objects.equals(nome, cliente.nome) && Objects.equals(cpf, cliente.cpf);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome);
+        return Objects.hash(id, nome, cpf);
     }
 
     @Override
     public String toString() {
-        return "Categoria{" +
+        return "Cliente{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
                 '}';
     }
 }
