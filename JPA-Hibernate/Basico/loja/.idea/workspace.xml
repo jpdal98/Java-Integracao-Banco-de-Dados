@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: esplorando ciclo de vida da JPA e suas funções">
+    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: criando consulta por id e consultando todos os registros">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LojaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LojaApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/dao/ProdutoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/dao/ProdutoDAO.java" afterDir="false" />
@@ -131,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709731564540</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: criando consulta por id e consultando todos os registros">
+      <option name="closed" value="true" />
+      <created>1709739727464</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709739727465</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -143,6 +151,7 @@
     <MESSAGE value="feat: utilizando mapeamento enumerated no atributo de categoria" />
     <MESSAGE value="feat: estabelecendo cardinalidade entre as classes produto e categoria" />
     <MESSAGE value="feat: esplorando ciclo de vida da JPA e suas funções" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: esplorando ciclo de vida da JPA e suas funções" />
+    <MESSAGE value="feat: criando consulta por id e consultando todos os registros" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: criando consulta por id e consultando todos os registros" />
   </component>
 </project>

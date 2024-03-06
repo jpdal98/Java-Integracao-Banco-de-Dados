@@ -13,16 +13,7 @@ public class LojaApplication {
 
     public static void main (String[] args){
         testeProduto();
-
-        EntityManager em = JPAutil.getEntityManager();
-
-        ProdutoDAO produtoDAO = new ProdutoDAO(em);
-        Produto p = produtoDAO.buscarPorId(1L);
-        System.out.println(p.getPreco());
-
-        List<Produto> produtos = produtoDAO.buscarProdutos();
-        produtos.forEach(p2 -> System.out.println(p.getNome()));
-
+        testeProdutoConsultas();
     }
 
     private static void testeProduto(){
@@ -47,7 +38,7 @@ public class LojaApplication {
         //metodo merge() da JPA permite com quem possamos recuperar a referencia de quando a entidade estava num
         // estado que podia ser gerenciado pela JPA
         celulares = em.merge(celulares);
-        celulares.setNome("Xiaomi");
+        celulares.setNome("Celulares");
         em.flush();
 
         //metodo remove() da JPA serve para excluir um objeto que antes havia sido salvo
@@ -65,5 +56,22 @@ public class LojaApplication {
         // rollback()
         em.getTransaction().commit();
         em.close();
+    }
+
+    private static void testeProdutoConsultas(){
+        EntityManager em = JPAutil.getEntityManager();
+
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+        Produto p = produtoDAO.buscarPorId(1L);
+        System.out.println(p.getPreco());
+
+        List<Produto> produtos = produtoDAO.buscarProdutos();
+        produtos.forEach(p2 -> System.out.println(p.getNome()));
+
+        produtos = produtoDAO.buscarPorNome("Xiaomi readmi 12");
+        produtos.forEach(p2 -> System.out.println(p.getNome()));
+
+        produtos = produtoDAO.buscarPorNomeDaCategoria("Celulares");
+        produtos.forEach(p2 -> System.out.println(p.getNome()));
     }
 }
