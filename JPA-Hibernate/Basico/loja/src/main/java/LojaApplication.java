@@ -5,15 +5,27 @@ import br.com.alura.loja.model.Produto;
 import br.com.alura.loja.util.JPAutil;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LojaApplication {
 
     public static void main (String[] args){
+        testeProduto();
 
+        EntityManager em = JPAutil.getEntityManager();
 
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+        Produto p = produtoDAO.buscarPorId(1L);
+        System.out.println(p.getPreco());
+
+        List<Produto> produtos = produtoDAO.buscarProdutos();
+        produtos.forEach(p2 -> System.out.println(p.getNome()));
+
+    }
+
+    private static void testeProduto(){
         EntityManager em = JPAutil.getEntityManager();
         Categoria celulares = new Categoria("Celulares");
         Produto celular = new Produto(
@@ -53,6 +65,5 @@ public class LojaApplication {
         // rollback()
         em.getTransaction().commit();
         em.close();
-
     }
 }
