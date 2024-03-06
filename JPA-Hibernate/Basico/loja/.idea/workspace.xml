@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: criando projeto loja">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: configurando conexão entre JPA e Banco de Dados">
+      <change afterPath="$PROJECT_DIR$/../../../JDBC/Bytebank/Script - Baco de dados.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +33,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/jpdal/Projects/Alura/Dev. Java Completo/Java-Integracao-Banco-de-Dados/JPA-Hibernate/Basico/loja"
+    "last_opened_file_path": "C:/Users/jpdal/Projects/Alura/Dev. Java Completo/Java-Integracao-Banco-de-Dados/JDBC/Bytebank"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -55,11 +53,20 @@
       <option name="project" value="LOCAL" />
       <updated>1709644669617</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: configurando conexão entre JPA e Banco de Dados">
+      <option name="closed" value="true" />
+      <created>1709645153826</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709645153826</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: criando projeto loja" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: criando projeto loja" />
+    <MESSAGE value="feat: configurando conexão entre JPA e Banco de Dados" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: configurando conexão entre JPA e Banco de Dados" />
   </component>
 </project>
