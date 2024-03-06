@@ -1,4 +1,6 @@
+import br.com.alura.loja.dao.ProdutoDAO;
 import br.com.alura.loja.model.Produto;
+import br.com.alura.loja.util.JPAutil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,13 +16,13 @@ public class LojaApplication {
         celular.setDescricao("top");
         celular.setPreco(new BigDecimal("1300"));
 
-        EntityManagerFactory factory = Persistence
-                .createEntityManagerFactory("loja");
+        EntityManager em = JPAutil.getEntityManager();
+        ProdutoDAO dao = new ProdutoDAO(em);
 
-        EntityManager em = factory.createEntityManager();
         em.getTransaction().begin();
-        em.persist(celular);
+        dao.cadastrar(celular);
         em.getTransaction().commit();
         em.close();
+
     }
 }
