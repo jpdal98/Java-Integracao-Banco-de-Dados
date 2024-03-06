@@ -1,4 +1,5 @@
 import br.com.alura.loja.dao.ProdutoDAO;
+import br.com.alura.loja.model.Categoria;
 import br.com.alura.loja.model.Produto;
 import br.com.alura.loja.util.JPAutil;
 
@@ -11,10 +12,8 @@ public class LojaApplication {
 
     public static void main (String[] args){
 
-        Produto celular = new Produto();
-        celular.setNome("Xiaomi Readmi 8");
-        celular.setDescricao("top");
-        celular.setPreco(new BigDecimal("1300"));
+        Produto celular = new Produto(
+                "Xiaomi Readmi 8", "top", new BigDecimal("1300"), Categoria.CELULARES);
 
         EntityManager em = JPAutil.getEntityManager();
         ProdutoDAO dao = new ProdutoDAO(em);

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: criando função cadastrar produto">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/dao/ProdutoDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/util/JPAutil.java" afterDir="false" />
+    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: Organizando o código">
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Categoria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LojaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LojaApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Produto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709724708487</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: Organizando o código">
+      <option name="closed" value="true" />
+      <created>1709726430741</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709726430741</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -109,6 +116,7 @@
     <MESSAGE value="feat: configurando conexão entre JPA e Banco de Dados" />
     <MESSAGE value="feat: Criando primeira entidade e mapeando a mesma no banco de dados" />
     <MESSAGE value="feat: criando função cadastrar produto" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: criando função cadastrar produto" />
+    <MESSAGE value="feat: Organizando o código" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Organizando o código" />
   </component>
 </project>
