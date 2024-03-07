@@ -11,24 +11,26 @@ import java.util.Objects;
 @Table(name = "pedidos")
 public class Pedido {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDate data = LocalDate.now();
 
+    @Column(name = "valor_total")
     private BigDecimal valorTotal;
 
     @ManyToOne
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade=CascadeType.ALL)
     private List<ItemPedido> itemPedidos = new ArrayList<>();
 
     public Pedido() {
     }
 
-    public Pedido(Cliente cliente, BigDecimal valorTotal) {
+    public Pedido(Cliente cliente) {
         this.cliente = cliente;
-        this.valorTotal = valorTotal;
     }
 
     public void adicionarPedido(ItemPedido item){

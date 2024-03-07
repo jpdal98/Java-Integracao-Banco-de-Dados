@@ -1,7 +1,8 @@
 import br.com.alura.loja.dao.CategoriaDAO;
+import br.com.alura.loja.dao.ClienteDAO;
+import br.com.alura.loja.dao.PedidoDAO;
 import br.com.alura.loja.dao.ProdutoDAO;
-import br.com.alura.loja.model.Categoria;
-import br.com.alura.loja.model.Produto;
+import br.com.alura.loja.model.*;
 import br.com.alura.loja.util.JPAutil;
 
 import javax.persistence.EntityManager;
@@ -12,15 +13,19 @@ import java.util.List;
 public class LojaApplication {
 
     public static void main (String[] args){
-        testeProduto();
-        testeProdutoConsultas();
+        populandoBaseDeDados();
+        //testeProdutoConsultas();
+        testeCadastroPedido();
     }
 
-    private static void testeProduto(){
+    private static void populandoBaseDeDados(){
         EntityManager em = JPAutil.getEntityManager();
         Categoria celulares = new Categoria("Celulares");
         Produto celular = new Produto(
                 "Xiaomi Readmi 8", "top", new BigDecimal("1300"), celulares);
+        Cliente cliente = new Cliente("João Pedro", "074.839.423-04");
+
+        ClienteDAO clienteDAO = new ClienteDAO(em);
         CategoriaDAO categoriaDAO = new CategoriaDAO(em);
         ProdutoDAO produtoDAO = new ProdutoDAO(em);
 
@@ -50,6 +55,8 @@ public class LojaApplication {
         celular.setNome("Xiaomi readmi 12");
         em.flush();
 
+        clienteDAO.cadastrar(cliente);
+
         //metodo commit() da JPA permite voce sincronizar os dados com o banco, e salva-los,
         // contudo, diferente do metodo flush(), apos salvar as modificações ele finaliza
         // a transação, impedindo de se realizar novas transações ou
@@ -76,5 +83,25 @@ public class LojaApplication {
 
         BigDecimal precoProduto = produtoDAO.buscarPrecoPorNomeDoProduto("Xiaomi readmi 12");
         System.out.println("Preço do produto: " + precoProduto);
+        em.close();
+    }
+
+    private static void testeCadastroPedido(){
+        EntityManager em = JPAutil.getEntityManager();
+
+        ClienteDAO  clienteDAO = new ClienteDAO(em);
+        Cliente cliente = clienteDAO.buscarPorId(1L);
+        ProdutoDAO  produtoDAO = new ProdutoDAO(em);
+        Produto produto = produtoDAO.buscarPorId(1L);
+        Pedido pedido = new Pedido(cliente);
+        PedidoDAO pedidoDAO = new PedidoDAO(em);
+        pedido.adicionarPedido(new ItemPedido(4, pedido, produto));
+
+        em.getTransaction().begin();
+
+        pedidoDAO.cadastrar(pedido);
+
+        em.getTransaction().commit();
+        em.close();
     }
 }
