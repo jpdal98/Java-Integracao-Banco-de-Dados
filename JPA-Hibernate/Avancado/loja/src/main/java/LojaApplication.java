@@ -4,10 +4,10 @@ import br.com.alura.loja.dao.PedidoDAO;
 import br.com.alura.loja.dao.ProdutoDAO;
 import br.com.alura.loja.model.*;
 import br.com.alura.loja.util.JPAutil;
+import br.com.alura.loja.vo.RelatorioDeVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LojaApplication {
@@ -16,13 +16,20 @@ public class LojaApplication {
         populandoBaseDeDados();
         //testeProdutoConsultas();
         testeCadastroPedido();
+        testeConsultasAvancadas();
     }
 
     private static void populandoBaseDeDados(){
         EntityManager em = JPAutil.getEntityManager();
         Categoria celulares = new Categoria("Celulares");
+        Categoria videoGames = new Categoria("Video Games");
+        Categoria computadores = new Categoria("Computadores");
         Produto celular = new Produto(
-                "Xiaomi Readmi 8", "top", new BigDecimal("1300"), celulares);
+                "Xiaomi Readmi 8", "top", new BigDecimal("800"), celulares);
+        Produto videoGame = new Produto(
+                "Playstation 5", "top", new BigDecimal("3200"), videoGames);
+        Produto computador = new Produto(
+                "Macbook pro ", "top", new BigDecimal("6000"), computadores);
         Cliente cliente = new Cliente("João Pedro", "074.839.423-04");
 
         ClienteDAO clienteDAO = new ClienteDAO(em);
@@ -31,6 +38,8 @@ public class LojaApplication {
 
         em.getTransaction().begin();
         categoriaDAO.cadastrar(celulares);
+        categoriaDAO.cadastrar(videoGames);
+        categoriaDAO.cadastrar(computadores);
         celulares.setNome("Nokia");
 
         //metodo flush() da JPA permite sincronizar os dados com o banco, ele salva mas não efetua o commit,
@@ -52,6 +61,9 @@ public class LojaApplication {
         //em.flush();
 
         produtoDAO.cadastrar(celular);
+        produtoDAO.cadastrar(videoGame);
+        produtoDAO.cadastrar(computador);
+
         celular.setNome("Xiaomi readmi 12");
         em.flush();
 
@@ -92,14 +104,38 @@ public class LojaApplication {
         ClienteDAO  clienteDAO = new ClienteDAO(em);
         Cliente cliente = clienteDAO.buscarPorId(1L);
         ProdutoDAO  produtoDAO = new ProdutoDAO(em);
-        Produto produto = produtoDAO.buscarPorId(1L);
-        Pedido pedido = new Pedido(cliente);
+        Produto produto1 = produtoDAO.buscarPorId(1L);
+        Produto produto2 = produtoDAO.buscarPorId(2L);
+        Produto produto3 = produtoDAO.buscarPorId(3L);
+        Pedido pedido1 = new Pedido(cliente);
+        Pedido pedido2 = new Pedido(cliente);
+        Pedido pedido3 = new Pedido(cliente);
         PedidoDAO pedidoDAO = new PedidoDAO(em);
-        pedido.adicionarPedido(new ItemPedido(4, pedido, produto));
+        pedido1.adicionarPedido(new ItemPedido(10, pedido1, produto1));
+        pedido2.adicionarPedido(new ItemPedido(5, pedido2, produto2));
+        pedido3.adicionarPedido(new ItemPedido(8, pedido3, produto3));
 
         em.getTransaction().begin();
 
-        pedidoDAO.cadastrar(pedido);
+        pedidoDAO.cadastrar(pedido1);
+        pedidoDAO.cadastrar(pedido2);
+        pedidoDAO.cadastrar(pedido3);
+
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    private static void testeConsultasAvancadas(){
+        EntityManager em = JPAutil.getEntityManager();
+
+        PedidoDAO pedidoDAO = new PedidoDAO(em);
+
+
+        em.getTransaction().begin();
+
+        System.out.println("Valor total: " + pedidoDAO.valorTotalVendido());
+        List<RelatorioDeVendasVo> relatorios = pedidoDAO.relatorioDeVendas();
+        relatorios.forEach(System.out::println);
 
         em.getTransaction().commit();
         em.close();
