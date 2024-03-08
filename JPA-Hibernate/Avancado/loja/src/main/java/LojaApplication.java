@@ -17,6 +17,7 @@ public class LojaApplication {
         //testeProdutoConsultas();
         testeCadastroPedido();
         testeConsultasAvancadas();
+        perfomaceConsultas();
     }
 
     private static void populandoBaseDeDados(){
@@ -139,5 +140,21 @@ public class LojaApplication {
 
         em.getTransaction().commit();
         em.close();
+    }
+
+    private static void perfomaceConsultas(){
+        EntityManager em = JPAutil.getEntityManager();
+        PedidoDAO pedidoDAO = new PedidoDAO(em);
+
+        em.getTransaction().begin();
+        Pedido pedido = pedidoDAO.buscarPorId(1L);
+        Pedido pedido2 = pedidoDAO.buscarPedidoComCliente(1L);
+        System.out.println(pedido.getData());
+        System.out.println(pedido.getCliente().getNome());
+
+        em.getTransaction().commit();
+        em.close();
+
+        System.out.println(pedido2.getCliente().getNome());
     }
 }

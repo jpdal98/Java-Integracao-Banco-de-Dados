@@ -20,7 +20,8 @@ public class Pedido {
     @Column(name = "valor_total")
     private BigDecimal valorTotal = BigDecimal.ZERO;
 
-    @ManyToOne
+    // FetchType.LAZY serve para não trazer as entidades que estão relacionadas, a n ser que eu queira acessa-la
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
     // o atributo cascade serve para propagar as operações realizadas em uma entidade e seu relacionamento.
@@ -60,6 +61,10 @@ public class Pedido {
 
     public List<ItemPedido> getItemPedidos() {
         return itemPedidos;
+    }
+
+    public LocalDate getData() {
+        return data;
     }
 
     @Override

@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: criando cadastro de pedidos">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/vo/RelatorioDeVendasVo.java" afterDir="false" />
+    <list default="true" id="1f218558-7be7-4a06-aa7a-1723599cbd3d" name="Changes" comment="feat: criando consulta de relatorio de vendas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LojaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LojaApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/dao/PedidoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/dao/PedidoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/ItemPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/ItemPedido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/alura/loja/model/Produto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709852957967</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feat: criando consulta de relatorio de vendas">
+      <option name="closed" value="true" />
+      <created>1709930150291</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1709930150291</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -209,6 +217,7 @@
     <MESSAGE value="feat: criando projeto" />
     <MESSAGE value="feat: mapeando novas entidades no projeto" />
     <MESSAGE value="feat: criando cadastro de pedidos" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: criando cadastro de pedidos" />
+    <MESSAGE value="feat: criando consulta de relatorio de vendas" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: criando consulta de relatorio de vendas" />
   </component>
 </project>
